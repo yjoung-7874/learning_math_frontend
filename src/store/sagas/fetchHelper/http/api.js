@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_HOST = "http://localhost:3001";
+const API_HOST = "https://suhoihn-backend-e4140594264a.herokuapp.com:3001";
 
 const axiosApi = axios.create({
     baseURL: API_HOST,
