@@ -83,6 +83,7 @@ export default function Main () {
 
   return (
     <div>
+	example
     <Card title={<Text>Configuration</Text>}>
       <Row span={24}>
         <Col span={12}>
