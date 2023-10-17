@@ -123,7 +123,7 @@ export default function BookmarkedList ({onItemClicked, setModalContent}) {
           description={
             <div>
               <Text>Question Type: {item.question.questionType}</Text><br/>
-              <Text>Chapters: {item.chapter}</Text><br/>
+              <Text>Chapters: {item.chapter.join(", ")}</Text><br/>
               <Text>Difficulty: {item.difficulty}</Text><br/>
               <Text>Paper: {item.paper}</Text><br/>
               <Text>timezone: {item.timezone}</Text>
