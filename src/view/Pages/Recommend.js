@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import RecommendList from '../Component/List/RecommendList'
 import BookmarkModal from "../Component/Modal/BookmarkModal"
 import OptionCard from "../Component/Card/OptionCard"
-import { Card, Row, Col, Button, Alert, Typography } from "antd"
+import { Spin, Card, Row, Col, Button, Alert, Typography } from "antd"
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { Actions as dataAction } from '../../store/actions/dataActions'
 import { useLocation } from 'react-router-dom'
@@ -30,14 +30,16 @@ export default function Recommend () {
     problemNum.push({ value: i, label: i, })
   }
 
-
-  const { data } = useSelector((state) => {
+  const { data, isLoading } = useSelector((state) => {
     let data = state.data;
-    return { data: data ? data : undefined, }
+    let isLoading = state.data.loadingData
+
+    return { 
+      data: data ? data : undefined, 
+      isLoading: isLoading
+    }
   }, shallowEqual)
-  
-  
-  
+
   let pathSnippets = Location.pathname.split('/')
   pathSnippets = pathSnippets.filter((i) => i)
   
