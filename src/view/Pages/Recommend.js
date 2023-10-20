@@ -42,7 +42,7 @@ export default function Recommend () {
   pathSnippets = pathSnippets.filter((i) => i)
   
   useEffect(()=> {
-    pathSnippets[0] !== 'Recommend' && setIsDataClicked(false)
+    pathSnippets[0] !== 'Recommended' && setIsDataClicked(false)
   }, [pathSnippets])
 
   const [isDataClicked, setIsDataClicked] = useState(false); 
