@@ -134,9 +134,8 @@ export default function BookmarkedList ({onItemClicked, setModalContent}) {
   )
 
   return (
-    data && <>
-    {
-      isLoading ? <Spin /> : <>
+    data && (
+      isLoading ? <Spin /> :
       <List itemLayout="vertical" size="large" dataSource={data.data}
               pagination={{
               onChange: (page) => { console.log(page); },
@@ -150,8 +149,6 @@ export default function BookmarkedList ({onItemClicked, setModalContent}) {
               }
               renderItem={onRenderListItem}
       />
-      </>
-    }
-    </>
+    )
   )
 }
