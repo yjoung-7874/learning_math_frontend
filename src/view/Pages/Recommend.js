@@ -87,7 +87,7 @@ export default function Recommend () {
             <Alert message="Instruction" type="info" showIcon />   
             <br />       
             <Text>- Select a number from 'Problem number' to submit how many number you would like to solve.</Text><br />
-            <Text>- Select a number from ''Wrong' to submit the level of number of times you got it wrong.</Text><br />
+            <Text>- Select a number from ''Wrong' to submit the level of times you got it wrong.</Text><br />
             <Text>  : if you select 5, questions you got wrong over 5 times will be displayed</Text><br />
             <Text>- If you are ready, click the "Submit" button.</Text>
           </Col>
