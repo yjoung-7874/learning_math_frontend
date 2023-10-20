@@ -25,7 +25,7 @@ export default function BookmarkedList ({onItemClicked, setModalContent}) {
 
   const { data, isLoading } = useSelector((state) => {
     let data = state.data;
-    let isLoading = state.data.isLoading
+    let isLoading = state.data.loadingData
 
     return { 
       data: data ? data : undefined, 

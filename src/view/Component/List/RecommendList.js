@@ -12,7 +12,7 @@ export default function RecommendedList({onItemClicked, setModalContent, listCon
 
   let { data } = useSelector((state) => {
     let data = state.data;
-    let isLoading = state.data.isLoading
+    let isLoading = state.data.loadingData
 
     return { 
       data: data ? data : undefined, 
