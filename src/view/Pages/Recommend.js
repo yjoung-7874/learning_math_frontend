@@ -75,7 +75,7 @@ export default function Recommend () {
             <Text>- Select a number from ''Wrong' to submit the level of number of times you got it wrong.</Text><br />
             <Text>  : if you select 5, questions you got wrong over 5 times will be displayed</Text><br />
             <Text>- If you are ready, click the "Submit" button.</Text>
-          </Col>            
+          </Col>
         </Row>
         <Row>
           <Col span={24} style={{textAlign: 'right'}}>
