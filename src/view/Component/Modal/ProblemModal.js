@@ -75,7 +75,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
     console.log("Get Ref Answer called in ProblemModal through updateAnswer");
     data.length > 0 &&
     dispatch(dataAction.getRefAnswer({
-      answerId: data[current].questionId !== undefined ? data[current].questionId : undefined,
+      answerId: data[current] !== undefined ? data[current].questionId : undefined,
       specificAnswerId: data[current].question.subQuestion[0].specificQuestionId ?
                           data[current].question.subQuestion[0].specificQuestionId : 
                           undefined
@@ -89,7 +89,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
 
     // The bookmark status is saved before updating "current"
     dispatch(dataAction.getSaveQuestion({
-      questionId: data[current].questionId !== undefined ? data[current].questionId : undefined,
+      questionId: data[current] !== undefined ? data[current].questionId : undefined,
       bookmarked: bookmarkState[current],
       wrong: wrongCountList[current],
     }))
@@ -100,7 +100,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
     // Get new answer for the loaded question
     data.length > 0 &&
     dispatch(dataAction.getRefAnswer({
-      answerId: data[current2].questionId !== undefined ? data[current2].questionId: undefined,
+      answerId: data[current2] !== undefined ? data[current2].questionId: undefined,
       specificAnswerId: data[current2].question.subQuestion[0].specificQuestionId ?
                           data[current2].question.subQuestion[0].specificQuestionId : 
                           undefined
