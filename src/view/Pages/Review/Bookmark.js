@@ -19,9 +19,10 @@ export default function Bookmark () {
       }, shallowEqual)
 
     return (
+        isLoading ? <Spin /> : 
         <>
-        isLoading ? <Spin /> : <BookmarkedList onItemClicked={()=>setIsBookmarkModalOpen(true)} setModalContent={setModalContent}/>
-        <BookmarkModal open={isBookmarkModalOpen} onClosed={closeBookmarkModal} modalContent = {modalContent}/>
+            <BookmarkedList onItemClicked={()=>setIsBookmarkModalOpen(true)} setModalContent={setModalContent}/>
+            <BookmarkModal open={isBookmarkModalOpen} onClosed={closeBookmarkModal} modalContent = {modalContent}/>
         </>
     )
 }
