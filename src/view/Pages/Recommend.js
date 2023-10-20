@@ -5,17 +5,20 @@ import OptionCard from "../Component/Card/OptionCard"
 import { Card, Row, Col, Button, Alert, Typography } from "antd"
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { Actions as dataAction } from '../../store/actions/dataActions'
+import { useLocation } from 'react-router-dom'
 
 const { Text, Title } = Typography;
 
 export default function Recommend () {
+  const dispatch = useDispatch();
+  const Location = useLocation()
+
   const [isBookmarkModalOpen, setIsRecommendationModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(<></>);
   const [wrongCount, setWrongCount] = useState(0);
   const closeBookmarkModal = () => {setIsRecommendationModalOpen(false)};
   const [listContent, setListContent] = useState([]);
   const [problemNumber, setProblemNumber] = useState(1); 
-
   const MAX_PROBLEM = 50;
 
   const wrongNum = [];
@@ -27,14 +30,23 @@ export default function Recommend () {
     problemNum.push({ value: i, label: i, })
   }
 
-  const dispatch = useDispatch();
 
   const { data } = useSelector((state) => {
     let data = state.data;
     return { data: data ? data : undefined, }
   }, shallowEqual)
+  
+  
+  
+  let pathSnippets = Location.pathname.split('/')
+  pathSnippets = pathSnippets.filter((i) => i)
+  
+  useEffect(()=> {
+    pathSnippets[0] !== 'Recommend' && setIsDataClicked(false)
+  }, [pathSnippets])
 
-  const onSubmitClicked = () => {    
+  const [isDataClicked, setIsDataClicked] = useState(false); 
+  const onSubmitClicked = () => {
     console.log('getQuestion called in ProblemList')
     dispatch(dataAction.getQuestions({
       questionNumber: problemNumber,
@@ -45,12 +57,13 @@ export default function Recommend () {
       bookmarked: "false",
       wrong: parseInt(wrongCount[0]),
     }))
+    setIsDataClicked(true) 
   }
 
   useEffect(() => {
     console.log("Data! which is ", data);
-    setListContent(data.data);
-  }, [data])
+    (data && isDataClicked === true) ? setListContent(data.data) : setListContent([])
+  }, [data, isDataClicked])
 
   const style={margin: 10}
 
