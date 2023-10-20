@@ -10,7 +10,7 @@ export default function AnswerModal({open, onClosed, onCleared }) {
   const {steps, isLoading} = useSelector((state) => {
     //console.log("STATE IS ", state);
     let data = state.data.answers;
-    let isLoading = state.data.isLoading;
+    let isLoading = state.data.loadingData;
     console.log("AnswerModal answers:", data);
     if(data === undefined) { data = []; }
 
