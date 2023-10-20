@@ -98,8 +98,10 @@ export default function Recommend () {
       </Card>
       <Row span={24}>
         <Col span={24}>
-          <RecommendList onItemClicked={()=>setIsRecommendationModalOpen(true)} setModalContent={setModalContent} listContent = {listContent}/>
-          <BookmarkModal open={isBookmarkModalOpen} onClosed={closeBookmarkModal} modalContent = {modalContent}/>
+          { isLoading ? <Spin/> : <>
+            <RecommendList onItemClicked={()=>setIsRecommendationModalOpen(true)} setModalContent={setModalContent} listContent = {listContent}/>
+            <BookmarkModal open={isBookmarkModalOpen} onClosed={closeBookmarkModal} modalContent = {modalContent}/>
+          </>}
         </Col>
       </Row>
     
