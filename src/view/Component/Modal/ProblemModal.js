@@ -26,7 +26,6 @@ export default function ProblemModal({open, onClosed, onCleared}) {
     let data = state.data.data;
     let returnData = new Array(data.length);
     
-    console.log("datawenfiwenfo", data);
     for(let i = 0; i < data.length; i++) {
       let generalQuestionImage = data[i].question.questionImage.image
       let subQuestionImage = data[i].question.subQuestion[0].subQuestionImage.image
@@ -237,8 +236,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
           </Col>
         </Row>
         <Divider/>
-        {isLoading ? <Spin/> : <>
-          {answerData[0] && console.log("Hi: ",current,answerData[0],"length:",answerData[0].answer.answerSubscripts.length)}
+        {isLoading ? <Spin /> : <>
           {answerData[0] && answerData[0].answer.answerSubscripts.map((i, idx) => (
           steps[current].title !== "quesiton does not exist" && answerData[0].answer.answerValues[0] != "None" && <Row>
               <Col span={4}>
