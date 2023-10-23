@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './css/RegisterScreen.css';
 
 const RegisterScreen = ({ history }) => {
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +13,7 @@ const RegisterScreen = ({ history }) => {
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
-      history.push('/');
+      navigate('/');
     }
   }, [history]);
 
@@ -33,12 +34,13 @@ const RegisterScreen = ({ history }) => {
     }
     try {
       const { data } = await axios.post(
-        "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/register",
+        // "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/register",
+        "http://localhost:3001/api/auth/register",
         { username, email, password },
         config
       );
       localStorage.setItem('authToken', data.token);
-      history.push('/');
+      navigate('/');
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {

@@ -5,6 +5,7 @@ import axios from 'axios';
 import './css/ResetPasswordScreen.css';
 
 const ResetPasswordScreen = ({ match }) => {
+  console.log("reset password screen: match =>", match)
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -30,7 +31,8 @@ const ResetPasswordScreen = ({ match }) => {
 
     try {
       const { data } = await axios.put(
-        `https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/passwordreset/${match.params.resetToken}`,
+        // `https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/passwordreset/${match.params.resetToken}`,
+        `http://localhost:3001/api/auth/passwordreset/${match.params.resetToken}`,
         {
           password,
         },

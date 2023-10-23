@@ -5,13 +5,15 @@ import OptionCard from "../Component/Card/OptionCard"
 import { Spin, Card, Row, Col, Button, Alert, Typography } from "antd"
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { Actions as dataAction } from '../../store/actions/dataActions'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const { Text, Title } = Typography;
 
 export default function Recommend () {
   const dispatch = useDispatch();
   const Location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
 
   const [isBookmarkModalOpen, setIsRecommendationModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(<></>);

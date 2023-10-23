@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Row, Col, Button, Card, Alert, Radio, Typography, List } from 'antd';
 import OptionCard from '../Component/Card/OptionCard'
@@ -10,8 +11,12 @@ import {Actions as dataAction} from '../../store/actions/dataActions'
 const { Text, Title } = Typography;
 
 
+
 export default function Main () {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+  
+  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
 
   // Modal
   const [isProblemModalOpen, setIsProblemModalOpen] = useState(false);

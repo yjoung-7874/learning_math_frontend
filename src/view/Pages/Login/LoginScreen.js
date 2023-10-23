@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './css/LoginScreen.css';
 
 const LoginScreen = ({ history }) => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
-      history.push('/');
+      navigate('/');
     }
   }, [history]);
 
@@ -24,13 +25,13 @@ const LoginScreen = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/login",
-        // "http://localhost:3001/api/auth/login",
+        // "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/login",
+        "http://localhost:3001/api/auth/login",
         { email, password },
         config
       );
       localStorage.setItem('authToken', data.token);
-      history.push('/');
+      navigate('/');
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
@@ -59,13 +60,13 @@ const LoginScreen = ({ history }) => {
         <div className="form-group">
           <label htmlFor="password">
             Password:{' '}
-            <Link
+            {/* <Link
               to="/forgotpassword"
               className="login-screen__forgotpassword"
               tabIndex={4}
             >
               Forgot Password?
-            </Link>
+            </Link> */}
           </label>
           <input
             tabIndex={2}

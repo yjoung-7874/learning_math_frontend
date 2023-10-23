@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Avatar, List } from 'antd';
+import { useNavigate } from 'react-router-dom';
 const data = [
   {
     title: 'Chapter 1: Equations',
@@ -16,6 +17,9 @@ const data = [
 ];
 
 export default function Reference () {
+  const navigate = useNavigate()
+  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
+
   return (
     <>
         <List
