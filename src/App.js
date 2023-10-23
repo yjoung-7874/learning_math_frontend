@@ -16,8 +16,6 @@ import Bookmark from './view/Pages/Review/Bookmark';
 import History from './view/Pages/Review/History';
 import Reference from './view/Pages/Reference'
 
-
-
 import Layout from './view/Layout/Layout';
 import Recommend from './view/Pages/Recommend'
 
@@ -35,11 +33,11 @@ function App() {
             <Route exact path="/Reference" element={<Reference/>}/>
             <Route exact path="/Recommended" element={<Recommend />}/>
             {/* <Route path="/" element={<Navigate replace to="/Main"/>}/> */}
-            <PrivateRoute exact path="/" component={PrivateScreen} />
-            <Route exact path="/login" component={LoginScreen} />
-            <Route exact path="/register" component={RegisterScreen} />
-            <Route exact path="/forgotpassword" component={ForgotPasswordScreen} />
-            <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen} />
+            <Route exact path="/" element={PrivateScreen} />
+            <Route exact path="/login" element={LoginScreen} />
+            <Route exact path="/register" element={RegisterScreen} />
+            <Route exact path="/forgotpassword" element={ForgotPasswordScreen} />
+            <Route exact path="/passwordreset/:resetToken" element={ResetPasswordScreen} />
           </Routes>                    
         </Layout>
       </BrowserRouter>
