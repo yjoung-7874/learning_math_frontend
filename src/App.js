@@ -3,6 +3,8 @@ import store from "./store"
 import { Provider } from "react-redux"
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
+import PrivateRoute from './view/Component/Login/routing/PrivateRoute'
+
 import PrivateScreen from './view/Component/Login/screens/PrivateScreen'
 import LoginScreen from './view/Component/Login/screens/LoginScreen'
 import RegisterScreen from './view/Component/Login/screens/RegisterScreen'
