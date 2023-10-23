@@ -30,7 +30,10 @@ function App() {
           <Route exact path="/register" element={RegisterScreen} />
           <Route exact path="/forgotpassword" element={ForgotPasswordScreen} />
           <Route exact path="/passwordreset/:resetToken" element={ResetPasswordScreen} />
-          <Layout>
+        </Routes>
+        <Layout>
+          <Routes>
+
             <Route exact path="/Main" element={<Main />}/>
             <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>}/>
             <Route exact path="/Review/Bookmark" element={<Bookmark />}/>
@@ -38,8 +41,8 @@ function App() {
             <Route exact path="/Reference" element={<Reference/>}/>
             <Route exact path="/Recommended" element={<Recommend />}/>
             {/* <Route path="/" element={<Navigate replace to="/Main"/>}/> */}
-          </Layout>
-        </Routes>
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </Provider>
   );
