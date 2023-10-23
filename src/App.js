@@ -13,23 +13,28 @@ import Recommend from './view/Pages/Recommend'
 
 
 function App() {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <Layout>
-                    <Routes>
-                        <Route exact path="/Main" element={<Main />}/>
-                        <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>}/>
-                        <Route exact path="/Review/Bookmark" element={<Bookmark />}/>
-                        <Route exact path="/Review/History" element={<History />}/>
-                        <Route exact path="/Reference" element={<Reference/>}/>
-                        <Route exact path="/Recommended" element={<Recommend />}/>
-                        <Route path="/" element={<Navigate replace to="/Main"/>}/>
-                    </Routes>                    
-                </Layout>
-            </BrowserRouter>
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route exact path="/Main" element={<Main />}/>
+            <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>}/>
+            <Route exact path="/Review/Bookmark" element={<Bookmark />}/>
+            <Route exact path="/Review/History" element={<History />}/>
+            <Route exact path="/Reference" element={<Reference/>}/>
+            <Route exact path="/Recommended" element={<Recommend />}/>
+            {/* <Route path="/" element={<Navigate replace to="/Main"/>}/> */}
+            <PrivateRoute exact path="/" component={PrivateScreen} />
+            <Route exact path="/login" component={LoginScreen} />
+            <Route exact path="/register" component={RegisterScreen} />
+            <Route exact path="/forgotpassword" component={ForgotPasswordScreen} />
+            <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen} />
+          </Routes>                    
+        </Layout>
+      </BrowserRouter>
+    </Provider>
+  );
 }
   
 export default App;

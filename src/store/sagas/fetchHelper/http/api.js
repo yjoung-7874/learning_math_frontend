@@ -1,12 +1,12 @@
 import axios from "axios"
 
 const API_HOST = "https://suhoihn-backend-e4140594264a.herokuapp.com";
+// const API_HOST = "http://localhost:3001";
 
 const axiosApi = axios.create({
     baseURL: API_HOST,
     timeout: 10000
 })
-
 
 axios.interceptors.request.use(function (config){
     return config;
