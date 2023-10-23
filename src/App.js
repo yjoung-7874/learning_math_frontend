@@ -25,15 +25,14 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={PrivateScreen} />
-          <Route exact path="/login" element={LoginScreen} />
-          <Route exact path="/register" element={RegisterScreen} />
-          <Route exact path="/forgotpassword" element={ForgotPasswordScreen} />
-          <Route exact path="/passwordreset/:resetToken" element={ResetPasswordScreen} />
+          <Route exact path="/" element={<PrivateScreen />} />
+          <Route exact path="/login" element={<LoginScreen/>} />
+          <Route exact path="/register" element={<RegisterScreen/>} />
+          <Route exact path="/forgotpassword" element={<ForgotPasswordScreen/>} />
+          <Route exact path="/passwordreset/:resetToken" element={<ResetPasswordScreen/>} />
         </Routes>
         <Layout>
           <Routes>
-
             <Route exact path="/Main" element={<Main />}/>
             <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>}/>
             <Route exact path="/Review/Bookmark" element={<Bookmark />}/>
