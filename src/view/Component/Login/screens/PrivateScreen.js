@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Navigate, Route } from 'react-router-dom';
 
-const PrivateScreen = ({ history }) => {
+const PrivateScreen = () => {
   // const logoutHandler = () => {
   //   localStorage.removeItem('authToken');
   //   history.push('/login');
@@ -10,8 +11,8 @@ const PrivateScreen = ({ history }) => {
 
   useEffect(() => {
     !localStorage.getItem('authToken')?
-      history.push('/login') : history.push('/Main')
-  }, [history]);
+    <Navigate to='/login'/> : <Navigate to='/Main' />
+  }, []);
 
 };
 
