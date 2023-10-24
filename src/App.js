@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import PrivateScreen from './view/Pages/Login/PrivateScreen'
 import LoginScreen from './view/Pages/Login/LoginScreen'
 import RegisterScreen from './view/Pages/Login/RegisterScreen'
-import ResetPasswordScreen from './view/Pages/Login/ResetPasswordScreen'
+// import ResetPasswordScreen from './view/Pages/Login/ResetPasswordScreen'
 
 import Main from './view/Pages/Main'
 import Bookmark from './view/Pages/Review/Bookmark';
@@ -25,15 +25,13 @@ function App() {
             <Route exact path="/" element={<PrivateScreen />} />
             <Route exact path="/login" element={<LoginScreen/>} />
             <Route exact path="/register" element={<RegisterScreen/>} />
-            <Route exact path="/passwordreset/:resetToken" element={<ResetPasswordScreen/>} />
 
-            <Route exact path="/Main" element={<Main />}/>
-            <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>}/>
-            <Route exact path="/Review/Bookmark" element={<Bookmark />}/>
-            <Route exact path="/Review/History" element={<History />}/>
-            <Route exact path="/Reference" element={<Reference/>}/>
-            <Route exact path="/Recommended" element={<Recommend />}/>
-            {/* <Route path="/" element={<Navigate replace to="/Main"/>}/> */}
+            <Route exact path="/Main" element={<Main />} />
+            <Route exact path="/Review" element={<Navigate replace to="/Review/Bookmark"/>} />
+            <Route exact path="/Review/Bookmark" element={<Bookmark />} />
+            <Route exact path="/Review/History" element={<History />} />
+            <Route exact path="/Reference" element={<Reference/>} />
+            <Route exact path="/Recommended" element={<Recommend />} />
           </Routes>
         </Layout>
       </BrowserRouter>

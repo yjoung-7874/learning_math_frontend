@@ -18,7 +18,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
   const [wrongCountList, setWrongCountList] = useState(new Array(MAX_QUESTIONS).fill(0));
   
   const [bookmarkCheckbox, setBookmarkCheckbox] = useState(
-    <Checkbox checked={false} onChange={() => {toggleBookmark()}}>Bookmark</Checkbox>
+    <Checkbox checked={false} onChange={() => toggleBookmark()}>Bookmark</Checkbox>
   );
 
   // Data fetched from the backend
@@ -74,8 +74,8 @@ export default function ProblemModal({open, onClosed, onCleared}) {
     console.log("Get Ref Answer called in ProblemModal through updateAnswer");
     data.length > 0 &&
     dispatch(dataAction.getRefAnswer({
-      answerId: data[current] !== undefined ? data[current].questionId : undefined,
-      specificAnswerId: data[current].question.subQuestion[0].specificQuestionId ?
+      answerId: data[current] ? data[current].questionId : undefined,
+      specificAnswerId: data[current] ?
                           data[current].question.subQuestion[0].specificQuestionId : 
                           undefined
     }))
@@ -88,7 +88,13 @@ export default function ProblemModal({open, onClosed, onCleared}) {
 
     // The bookmark status is saved before updating "current"
     dispatch(dataAction.getSaveQuestion({
-      questionId: data[current] !== undefined ? data[current].questionId : undefined,
+      userEmail: localStorage.getItem('userEmail'),
+      questionId: data[current] ? 
+                    data[current].questionId : 
+                    undefined,
+      specificQuestionId: data[current] ? 
+                            data[current].question.subQuestion[0].specificQuestionId : 
+                            undefined,
       bookmarked: bookmarkState[current],
       wrong: wrongCountList[current],
     }))
@@ -99,7 +105,7 @@ export default function ProblemModal({open, onClosed, onCleared}) {
     // Get new answer for the loaded question
     data.length > 0 &&
     dispatch(dataAction.getRefAnswer({
-      answerId: data[current2] !== undefined ? data[current2].questionId: undefined,
+      answerId: data[current2] ? data[current2].questionId: undefined,
       specificAnswerId: data[current2].question.subQuestion[0].specificQuestionId ?
                           data[current2].question.subQuestion[0].specificQuestionId : 
                           undefined

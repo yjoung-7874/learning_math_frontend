@@ -13,8 +13,10 @@ export default function Recommend () {
   const dispatch = useDispatch();
   const Location = useLocation()
   const navigate = useNavigate()
-  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
-
+  useEffect(() => !localStorage.getItem('authToken') ? 
+    navigate('/login') : 
+    navigate('/Recommended')
+, []);
   const [isBookmarkModalOpen, setIsRecommendationModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(<></>);
   const [wrongCount, setWrongCount] = useState(0);
@@ -53,12 +55,12 @@ export default function Recommend () {
   const onSubmitClicked = () => {
     console.log('getQuestion called in ProblemList')
     dispatch(dataAction.getQuestions({
+      userEmail: localStorage.getItem('userEmail'),
       questionNumber: problemNumber,
       difficulty: [1, 2, 3],
       timezone: [1, 2, 3],
       paper: [1, 2, 3],
       chapter: [1,2,3,4,5,6,7,8,9,10,11,12],
-      bookmarked: "false",
       wrong: parseInt(wrongCount[0]),
     }))
     setIsDataClicked(true) 

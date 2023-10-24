@@ -13,6 +13,7 @@ export default function HistoryList({onItemClicked, setModalContent}) {
   useEffect(()=>{
     console.log('getQuestion called in HistoryList')
     dispatch(dataAction.getQuestions({
+      userEmail: localStorage.getItem('userEmail'),
       questionNumber: 5,
       difficulty: [1, 2, 3],
       timezone: [1, 2, 3],

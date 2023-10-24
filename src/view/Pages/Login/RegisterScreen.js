@@ -40,6 +40,7 @@ const RegisterScreen = ({ history }) => {
         config
       );
       localStorage.setItem('authToken', data.token);
+      localStorage.setItem('userEmail', email);
       navigate('/');
     } catch (error) {
       setError(error.response.data.error);

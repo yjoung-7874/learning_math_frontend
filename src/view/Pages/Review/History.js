@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Bookmark () {
     const navigate = useNavigate()
-    useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
-
+    useEffect(() => !localStorage.getItem('authToken') ? 
+                        navigate('/login') : 
+                        navigate('/Review/History')
+    , []);
     const [isBookmarkModalOpen, setIsBookmarkModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(<></>);
 

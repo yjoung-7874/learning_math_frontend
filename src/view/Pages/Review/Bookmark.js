@@ -13,7 +13,10 @@ export default function Bookmark () {
     const closeBookmarkModal = () => {setIsBookmarkModalOpen(false)};
     
     const navigate = useNavigate()
-    useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
+    useEffect(() => !localStorage.getItem('authToken') ? 
+                        navigate('/login') : 
+                        navigate('/Review/Bookmark')
+    , []);
 
     return ( 
     <>

@@ -16,8 +16,10 @@ export default function Main () {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   
-  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
-
+  useEffect(() => !localStorage.getItem('authToken') ? 
+    navigate('/login') : 
+    navigate('/Main')
+, []);
   // Modal
   const [isProblemModalOpen, setIsProblemModalOpen] = useState(false);
   const onProblemModalClosed = () => setIsProblemModalOpen(false);
@@ -37,7 +39,6 @@ export default function Main () {
       timezone: Array.isArray(timezoneValue)? timezoneValue: new Array(timezoneValue),
       paper: Array.isArray(paperValue)? paperValue: new Array(paperValue),
       chapter: Array.isArray(chapterValue)? chapterValue: new Array(chapterValue),
-      wrong: 0, 
     }));
 
     setIsProblemModalOpen(true);

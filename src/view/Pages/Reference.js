@@ -18,21 +18,21 @@ const data = [
 
 export default function Reference () {
   const navigate = useNavigate()
-  useEffect(() => !localStorage.getItem('authToken') && navigate('/login'), []);
-
+  useEffect(() => !localStorage.getItem('authToken') ? 
+  navigate('/login') : 
+  navigate('/Reference')
+, []);
   return (
     <>
-        <List
-            itemLayout="horizontal"
-            dataSource={data}
-            renderItem={(item, index) => (
-                <List.Item>
-                    <List.Item.Meta
-                        title={<a href="https://ant.design">{item.title}</a>}
-                        description="temp desc."
-                    />
-                </List.Item>
-            )}
+        <List itemLayout="horizontal" dataSource={data}
+          renderItem={(item, index) => (
+              <List.Item>
+                  <List.Item.Meta
+                      title={<a href="https://ant.design">{item.title}</a>}
+                      description="temp desc."
+                  />
+              </List.Item>
+          )}
         />
     </>
     );
