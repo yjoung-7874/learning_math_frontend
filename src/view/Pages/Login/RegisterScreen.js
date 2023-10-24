@@ -34,8 +34,8 @@ const RegisterScreen = ({ history }) => {
     }
     try {
       const { data } = await axios.post(
-        // "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/register",
-        "http://localhost:3001/api/auth/register",
+        "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/register",
+        // "http://localhost:3001/api/auth/register",
         { username, email, password },
         config
       );

@@ -25,8 +25,8 @@ const LoginScreen = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        // "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/login",
-        "http://localhost:3001/api/auth/login",
+        "https://suhoihn-backend-e4140594264a.herokuapp.com/api/auth/login",
+        // "http://localhost:3001/api/auth/login",
         { email, password },
         config
       );
